@@ -1,0 +1,66 @@
+package br.edu.univas.main;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import br.edu.univas.vo.GeradorSenha;
+
+public class StartApp {
+
+	public static void main(String[] args) {
+		GeradorSenha geradorSenha = new GeradorSenha();
+		ArrayList<String> concatenaString = new ArrayList<>();
+		cadastrarSenha(geradorSenha, concatenaString);
+		gerarSenha(geradorSenha, concatenaString);
+	}
+
+	public static void cadastrarSenha(GeradorSenha geradorSenha, ArrayList<String> concatenaString) {
+		
+		for (int i = 0;; i++) {
+			
+			System.out.println("Digite o tamanho mínimo");
+			geradorSenha.setMinSenha(readInt());
+			
+			System.out.println("Digite o tamanho máximo");
+			geradorSenha.setMaxSenha(readInt());
+			
+			System.out.println("Deseja letras maiúsculas na senha ?");
+			
+			
+				
+		
+		}
+
+	}
+
+	public static void gerarSenha(GeradorSenha geradorSenha, ArrayList<String> concatenaString) {
+		String senha = "";
+		String concatenado = "";
+		Random random = new Random();
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i < concatenaString.size(); i++) {
+			concatenado += concatenaString.get(i);
+		}
+
+		/*
+		 * for(int i = 0; geradorSenha.getMaxSenha() > i ;i++) { for(int j = i;
+		 * geradorSenha.getMinSenha() < j; j++) { senhaA[i] =
+		 * concatenaString.charAt(random.nextInt(geradorSenha.getMinSenha())); }
+		 * 
+		 * }
+		 */
+		}
+	
+	public static int readInt() {
+		Scanner scanner = new Scanner(System.in);
+		int value = scanner.nextInt();
+		scanner.nextLine();
+		return value;
+	}
+	
+	
+	
+
+}

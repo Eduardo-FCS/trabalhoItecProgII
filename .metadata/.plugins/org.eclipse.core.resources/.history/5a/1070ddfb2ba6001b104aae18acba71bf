@@ -1,0 +1,169 @@
+package br.edu.univas.main;
+import java.util.Scanner;
+import java.io.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import br.edu.univas.vo.GeradorSenha;
+
+public class StartApp {
+
+	public static Scanner scanner = new Scanner(System.in);
+	public static String senha = "";
+	public static boolean temMaiuscula = false;
+	public static boolean temMinuscula = false;
+	public static boolean temEspecial = false;
+	public static boolean temNumeros = false;
+
+	public static void main(String[] args) throws IOException {
+
+		GeradorSenha geradorSenha = new GeradorSenha();
+
+		cadastrarSenha(geradorSenha);
+		gerarSenha(geradorSenha);
+		salvarArquivo();
+		scanner.close();
+
+	}
+
+	public static void cadastrarSenha(GeradorSenha geradorSenha) {
+
+		for (int i = 0;; i++) {
+
+			int options;
+
+			System.out.println("Digite o tamanho mínimo");
+			geradorSenha.setMinSenha(lerInteiro());
+
+			System.out.println("Digite o tamanho máximo");
+			geradorSenha.setMaxSenha(lerInteiro());
+
+			if (geradorSenha.getMaxSenha() > geradorSenha.getMinSenha()) {
+
+				System.out.println("Deseja letras maiúsculas na senha ?" + "\n" + "1- True;" + "\n" + "2- False;");
+				options = lerInteiro();
+
+				if (options == 1 || options == 2) {
+					if (options == 1) {
+						temMaiuscula = true;
+					}
+				} else {
+					boolean troca = false;
+					System.out.println("Comando inválido!");
+				}
+
+				System.out.println("Deseja letras minúsculas na senha ?" + "\n" + "1- True;" + "\n" + "2- False;");
+				options = lerInteiro();
+
+				if (options == 1 || options == 2) {
+					if (options == 1) {
+						temMinuscula = true;
+					}
+				} else {
+					System.out.println("Comando inválido!");
+				}
+
+				System.out.println("Deseja números na senha ?" + "\n" + "1- True;" + "\n" + "2- False;");
+				options = lerInteiro();
+
+				if (options == 1 || options == 2) {
+					if (options == 1) {
+						temNumeros = true;
+					}
+				} else {
+					System.out.println("Comando inválido!");
+				}
+
+				System.out.println("Deseja caracteres especiais na senha ?" + "\n" + "1- True;" + "\n" + "2- False;");
+				options = lerInteiro();
+
+				if (options == 1 || options == 2) {
+					if (options == 1) {
+						temEspecial = true;
+						break;
+					}
+				} else {
+					System.out.println("Comando inválido!");
+				}
+
+			}
+
+			else {
+
+				System.out.println("Valor máximo e mínimo não compatíveis!");
+
+			}
+
+		}
+
+	}
+
+	public static void gerarSenha(GeradorSenha geradorSenha) {
+		Random random = new Random();
+		StringBuilder sb = new StringBuilder();
+
+		int intero = 0;
+		int letra = geradorSenha.getCaracterMinusculo().length()-1;
+		int especial = geradorSenha.getCaracterEspec().length()-1;
+		int numero = geradorSenha.getNumero().length()-1;
+		char s;
+
+		int aleatorio = random.nextInt((geradorSenha.getMaxSenha() - geradorSenha.getMinSenha()) + 1)
+				+ geradorSenha.getMinSenha();
+
+		for (int i = 0; i < aleatorio; i++) {
+
+			if (temMaiuscula == true) {
+				sb.append(geradorSenha.getCaracterMaiusculo().charAt(random.nextInt(letra)));
+				intero++;
+				if (intero == aleatorio) {
+					break;
+				}
+			}
+			if (temMinuscula == true) {	
+				sb.append(geradorSenha.getCaracterMinusculo().charAt(random.nextInt(letra)));
+				intero++;
+				if (intero == aleatorio) {
+					break;
+				}
+			}
+			if (temEspecial == true) {
+				sb.append(geradorSenha.getCaracterEspec().charAt(random.nextInt(especial)));
+				intero++;
+				if (intero == aleatorio) {
+					break;
+				}
+			}
+			if (temNumeros == true) {
+				sb.append(geradorSenha.getNumero().charAt(random.nextInt(numero)));
+				intero++;
+				if (intero == aleatorio) {
+					break;
+				}
+			}
+
+		}
+
+		senha = sb.toString();
+	}
+
+	public static int lerInteiro() {
+		int value = scanner.nextInt();
+		scanner.nextLine();
+		return value;
+	}
+	
+	public static void salvarArquivo() throws IOException {
+		System.out.println("Digite abaixo o nome do local que deseja salvar o arquivo:");
+		String arquivoSalvar = scanner.nextLine();
+		arquivoSalvar+="\\secret_password.txt";
+	
+		FileWriter arquivo = new FileWriter(arquivoSalvar);
+		PrintWriter imprimir = new PrintWriter(arquivo);
+		imprimir.printf("%s", senha);
+		arquivo.close();
+		
+	}
+
+}

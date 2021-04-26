@@ -1,0 +1,60 @@
+package br.edu.univas.main;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import br.edu.univas.vo.GeradorSenha;
+
+public class StartApp {
+
+	public static void main(String[] args) {
+		GeradorSenha geradorSenha = new GeradorSenha();
+		ArrayList<String> concatenaString = new ArrayList<>();
+		Scanner scanner = new Scanner(System.in);
+		cadastrarSenha(scanner, geradorSenha, concatenaString);
+		gerarSenha(geradorSenha, concatenaString);
+	}
+
+	public static void cadastrarSenha(Scanner scanner, GeradorSenha geradorSenha, ArrayList<String> concatenaString) {
+
+		System.out.println("Digite o tamanho mínimo");
+		geradorSenha.setMinSenha(scanner.nextInt());
+		scanner.nextLine();
+		System.out.println("Digite o tamanho máximo");
+		geradorSenha.setMaxSenha(scanner.nextInt());
+		scanner.nextLine();
+
+		if (geradorSenha.getMinSenha() < geradorSenha.getMaxSenha()) {
+			
+			System.out.println("Digite os caracteres maiúsculos que você queira que coloque:");
+			geradorSenha.setCaracterMaiusculo(scanner.nextLine());
+			
+			
+			System.out.println("Digite os caracteres minúsculos que você queira que coloque:");
+			geradorSenha.setCaracterMinusculo(scanner.nextLine());
+			
+			
+			System.out.println("Digite os números");
+			geradorSenha.setNumero(scanner.nextLine());
+			
+			
+			System.out.println("Digite as caracteres especiais");
+			geradorSenha.setCaracterEspec(scanner.nextLine());
+			
+		}
+	}
+	
+	public static void gerarSenha(GeradorSenha geradorSenha, ArrayList<String> concatenaString) {
+			String senha = "";
+			Random random = new Random();
+			
+			for(int i = 0; geradorSenha.getMaxSenha() > i ;i++) { //fazer a formula da senha
+				for(int j = i; geradorSenha.getMinSenha() < j; j++) {
+					
+				}
+				
+			}
+			
+			
+	}
+
+}

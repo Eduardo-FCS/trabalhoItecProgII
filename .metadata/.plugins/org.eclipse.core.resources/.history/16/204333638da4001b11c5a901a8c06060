@@ -1,0 +1,36 @@
+package br.edu.univas.main;
+
+import java.util.Scanner;
+
+import br.edu.univas.vo.GeradorSenha;
+
+public class StartApp {
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		gerarSenha(scanner);
+	}
+	
+	public static void gerarSenha(Scanner scanner) {
+		GeradorSenha geradorSenha = new GeradorSenha();
+		
+		System.out.println("Digite o tamanho mínimo");
+		geradorSenha.setMinSenha(scanner.nextInt());
+		scanner.nextLine();
+		System.out.println("Digite o tamanho máximo");
+		geradorSenha.setMaxSenha(scanner.nextInt());
+		scanner.nextLine();
+		System.out.println("Digite os caracteres maiúsculos que você queira que coloque:");
+		geradorSenha.setCaracterMaiusculo(scanner.nextLine());
+		System.out.println("Digite os caracteres minúsculos que você queira que coloque:");
+		geradorSenha.setCaracterMinusculo(scanner.nextLine());
+		System.out.println("Digite os números");
+		geradorSenha.setNumeros(scanner.nextInt());
+		scanner.nextLine();
+		System.out.println("Digite as caracteres especiais");
+		geradorSenha.setCaracterEspec(scanner.nextLine());
+		
+		System.out.println(geradorSenha.getMinSenha());
+	}
+
+}

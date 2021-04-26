@@ -1,0 +1,55 @@
+package br.edu.univas.vo;
+
+import java.util.ArrayList;
+
+public class GeradorSenha {
+	
+	private int maxSenha;
+	private int minSenha;
+	private ArrayList<String> caracterMinusculo = new ArrayList<>();
+	private ArrayList <String> caracterMaiusculo = new ArrayList<>();
+	private ArrayList <String> numeros = new ArrayList<>();
+	private ArrayList <String> caracterEspec = new ArrayList<>();
+	
+	public int getMaxSenha() {
+		return maxSenha;
+	}
+	public void setMaxSenha(int maxSenha) {
+		this.maxSenha = maxSenha;
+	}
+	public int getMinSenha() {
+		return minSenha;
+	}
+	public void setMinSenha(int minSenha) {
+		this.minSenha = minSenha;
+	}
+	public ArrayList<String> getCaracterMinusculo() {
+		return caracterMinusculo;
+	}
+	public void setCaracterMinusculo(ArrayList<String> caracterMinusculo) {
+		this.caracterMinusculo = caracterMinusculo;
+	}
+	public ArrayList<String> getCaracterMaiusculo() {
+		return caracterMaiusculo;
+	}
+	public void setCaracterMaiusculo(ArrayList<String> caracterMaiusculo) {
+		this.caracterMaiusculo = caracterMaiusculo;
+	}
+	public ArrayList<String> getNumeros() {
+		return numeros;
+	}
+	public void setNumeros(ArrayList<String> numeros) {
+		this.numeros = numeros;
+	}
+	public ArrayList<String> getCaracterEspec() {
+		return caracterEspec;
+	}
+	public void setCaracterEspec(ArrayList<String> caracterEspec) {
+		this.caracterEspec = caracterEspec;
+	}
+	
+	
+	
+	
+
+}
